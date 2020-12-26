@@ -3,7 +3,7 @@
 
 import pandas as pd 
 import numpy as np
-import random as rnd
+import random
 
 filename_ = "https://raw.githubusercontent.com/2blam/ML/master/deep_learning/Churn_Modelling.csv"
 
@@ -43,14 +43,13 @@ def test_data(df, holes):
   param holes: count of missing values
   return temp dataframe
   '''
-  import random as rnd
   rows = len(df)
   cols = len(df.columns)
   mask = np.full((rows,cols),False)  
 
   for i in range(40):
-    row = rnd.randint(0,rows)
-    col = rnd.randint(2,cols-1)
+    row = random.randint(0,rows)
+    col = random.randint(2,cols-1)
     mask[row,col] = True  
 
   temp = np.where(mask,np.nan, df)
