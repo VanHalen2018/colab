@@ -31,4 +31,28 @@ def missing_lines(df, columns, n = ms_lines_):
   missing_index = np.random.randint(len(df), size=n)
   df.loc[missing_index, columns] = np.nan
   return df
- 
+
+# scattered errors in the database
+
+def test_data(df, holes):
+  '''
+  places n holes in the database.
+  the data in the first two columns do not change.
+  param df: dataframe
+  param holes: count of missing values
+  return temp dataframe
+  '''
+  rows = len(df)
+  cols = len(df.columns)
+  mask = np.full((rows,cols),False)  
+
+  for i in range(40):
+    row = rnd.randint(0,rows)
+    col = rnd.randint(2,cols-1)
+    mask[row,col] = True  
+
+  temp = np.where(mask,np.nan, df)
+  temp = pd.DataFrame(temp, index=df.index, columns=df.columns)
+  print(temp.isna().sum())
+
+  return temp
