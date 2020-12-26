@@ -3,6 +3,7 @@
 
 import pandas as pd 
 import numpy as np
+import random as rnd
 
 filename_ = "https://raw.githubusercontent.com/2blam/ML/master/deep_learning/Churn_Modelling.csv"
 
