@@ -43,6 +43,7 @@ def test_data(df, holes):
   param holes: count of missing values
   return temp dataframe
   '''
+  import random as rnd
   rows = len(df)
   cols = len(df.columns)
   mask = np.full((rows,cols),False)  
